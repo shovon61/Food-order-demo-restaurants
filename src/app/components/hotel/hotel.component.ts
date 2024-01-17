@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { HotelService } from 'src/app/services/hotel.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+//import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SideNavService } from 'src/app/services/side-nav.service';
 
@@ -12,10 +12,10 @@ import { SideNavService } from 'src/app/services/side-nav.service';
 })
 export class HotelComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('sidenav', {static: true}) public sidenav: MatSidenav;
+  @ViewChild('sidenav', {static: true}) public sidenav!: MatSidenav;
 
   public hotels = [];
-  public hotel;
+  public hotel: any;
   public cartItems = [];
   public totalAmount = 0;
   public isFetched: boolean = false;
@@ -40,7 +40,7 @@ export class HotelComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addToMyCart = (menu) => {
+  addToMyCart = (menu:any) => {
     const newItem = {
       "id": menu.id,
       "name": menu.name,
@@ -58,16 +58,16 @@ export class HotelComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addItemToMyCart = (newItem) => {
+  addItemToMyCart = (newItem:any) => {
     this._hotelService.setCartItem(newItem);
     this.cartItems = this._hotelService.cartItems;
   }
 
-  isItemAlreadyExist = (newItem) => {
+  isItemAlreadyExist = (newItem:any) => {
     return this._hotelService.cartItems.find((cartItem) => cartItem.id == newItem.id);
   }
 
-  itemAddedModal = (newItem) => {
+  itemAddedModal = (newItem:any) => {
     Swal.fire({
       icon: 'success',
       title: `${newItem.name} added to your basket!`,

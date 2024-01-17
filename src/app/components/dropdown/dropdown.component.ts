@@ -7,14 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() public selectedValue;
-  @Input() public sortOptions;
+  @Input() public selectedValue: any;
+  @Input() public sortOptions: any;
 
   @Output() sortEvent = new EventEmitter();
 
   constructor() { }
 
-  sortHotels = (selectedValue) => {
+  sortHotels = (selectedValue: any) => {
     this.sortEvent.emit(selectedValue);
   }
 

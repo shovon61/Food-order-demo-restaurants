@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() public cartItems;
+  @Input() public cartItems: any;
 
   @Output() removeQuantityEvent = new EventEmitter();
   @Output() addQuantityEvent = new EventEmitter(); 
@@ -15,15 +15,15 @@ export class CartItemComponent implements OnInit {
 
   constructor() { }
 
-  removeQuantity = (cartItem) => {
+  removeQuantity = (cartItem: any) => {
     this.removeQuantityEvent.emit(cartItem);
   }
 
-  addQuantity = (cartItem) => {
+  addQuantity = (cartItem: any) => {
     this.addQuantityEvent.emit(cartItem);
   }
 
-  removeItem = (cartItem) => {
+  removeItem = (cartItem: any) => {
     this.removeItemEvent.emit(cartItem);
   }
 

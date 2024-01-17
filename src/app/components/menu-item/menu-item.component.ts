@@ -7,13 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MenuItemComponent implements OnInit {
 
-  @Input() public hotel;
+  @Input() public hotel: any;
 
   @Output() addToMyCartEvent = new EventEmitter();
 
   constructor() { }
 
-  addToMyCart = (menu) => {
+  addToMyCart = (menu: any) => {
     this.addToMyCartEvent.emit(menu);
   }
 

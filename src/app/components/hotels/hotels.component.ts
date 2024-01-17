@@ -34,7 +34,7 @@ export class HotelsComponent implements OnInit {
       confirmButtonColor: '#9c27b0',
       allowOutsideClick: false,
       allowEscapeKey: false,
-      inputValidator: (value) => {
+      inputValidator: (value: any) => {
         if (!value) {
           return 'Please enter your name!'
         }
@@ -46,11 +46,11 @@ export class HotelsComponent implements OnInit {
     });
   }
 
-  searchQuery = (query) => {
+  searchQuery = (query: string) => {
     this.hotels = this.hotelsConstant.filter((hotel) =>  JSON.stringify(hotel).toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }
 
-  sortHotels = (selectedValue) => {
+  sortHotels = (selectedValue: string) => {
 
     if (selectedValue === 'rating'){
       this.hotels = this.hotels.sort((a,b) => {
@@ -65,7 +65,7 @@ export class HotelsComponent implements OnInit {
     }
 
     else if (selectedValue === 'name'){
-       function compareName (a, b)  {
+       function compareName (a: string | number, b: string | number)  {
         // case-insensitive comparison
         a = a.toLowerCase();
         b = b.toLowerCase();
@@ -78,11 +78,11 @@ export class HotelsComponent implements OnInit {
     }
   }
 
-  goToHotel = (hotel) => {
+  goToHotel = (hotel: { id: any; }) => {
     this.router.navigate(['/hotels', hotel.id])
   }
 
-  showError = (error) => {
+  showError = (error: { status: any; message: any; }) => {
     Swal.fire({
       icon: 'error',
       title: error.status,

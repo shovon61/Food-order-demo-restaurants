@@ -14,7 +14,7 @@ export class SearchBarComponent implements OnInit {
 
   constructor() { }
 
-  searchQuery = (query) => {
+  searchQuery = (query: any) => {
     this.searchQueryEvent.emit(query);
   }
 
